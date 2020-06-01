@@ -28,8 +28,6 @@ io.on('connection', socket => {
     socket.on('chatMessage', (message) => {
         io.emit('message', message);
     });
-
-
 });
 
 const PORT = 4000 || process.env.PORT;

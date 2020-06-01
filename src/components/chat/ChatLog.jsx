@@ -1,36 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getChatMessages, sendMessage } from '../../actions/chatActions';
-import PropTypes from 'prop-types';
-import socketIOClient from "socket.io-client";
+import { getSocket } from '../../actions/socketActions';
 
-const ENDPOINT = "http://127.0.0.1:4000";
-let socket = socketIOClient(ENDPOINT);
+import PropTypes from 'prop-types';
 
 class ChatLog extends Component {
-
-    // constructor(props) {
-    //     super(props)
-
-    //     socket.on('message', (res) => {
-    //         console.log('res: ', res);            
-    //         this.props.sendMessage(res);
-    //     });
-    // }
 
     static propTypes = {
         messages: PropTypes.array.isRequired
     }
 
     componentDidMount() {
-        socket.on('message', (res) => {
+        this.props.socket.on('message', (res) => {
             console.log('res: ', res);            
             this.props.sendMessage(res);
         });
-
-        this.props.getChatMessages();
     }
-
+ 
     render() {
         return (
             <div>
@@ -51,7 +38,8 @@ class ChatLog extends Component {
 }
 
 const mapStateToProps = state => ({
-    messages: state.chatReducers.messages
+    messages: state.chatReducers.messages,
+    socket: state.socketReducers.socket
 })
 
-export default connect(mapStateToProps, { getChatMessages, sendMessage })(ChatLog);
+export default connect(mapStateToProps, { getChatMessages, sendMessage, getSocket })(ChatLog);

@@ -1,26 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { sendMessage, emitMessage } from '../../actions/chatActions'
-import socketIOClient from "socket.io-client";
-
-const ENDPOINT = "http://127.0.0.1:4000";
-let socket = socketIOClient(ENDPOINT);;
+import { sendMessage } from '../../actions/chatActions'
+import { getSocket } from '../../actions/socketActions'
 
 class ChatForm extends Component {
-
-    // constructor(props) {
-    //     super(props)
-    //     const {dispatch} = this.props
-
-    //     console.dir(socket);
-
-    //     socket.on('chatMessage', (res) => {
-    //         console.dir(res);
-    //         // dispatch(sendMessage(res));
-    //         this.props.sendMessage(res);
-    //     });
-    // }
-
     state = {
         message: ''
     };
@@ -30,7 +13,7 @@ class ChatForm extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        socket.emit('chatMessage', this.state.message);
+        this.props.socket.emit('chatMessage', this.state.message);
 
         this.setState({
             message: ''
@@ -62,4 +45,8 @@ class ChatForm extends Component {
     }
 }
 
-export default connect(null, { sendMessage })(ChatForm)
+const mapStateToProps = state => ({
+    socket: state.socketReducers.socket
+})
+
+export default connect(mapStateToProps, { sendMessage, getSocket })(ChatForm)
