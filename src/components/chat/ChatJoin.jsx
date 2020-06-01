@@ -11,6 +11,7 @@ export class ChatJoin extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+
         this.props.joinChat(this.state.username);
 
         this.setState({
@@ -45,7 +46,8 @@ export class ChatJoin extends Component {
 }
 const mapStateToProps = state => ({
     chatJoined: state.chatReducers.chatJoined,
-    username: state.chatReducers.username
+    username: state.chatReducers.username,
+    socket: state.chatReducers.socket
 })
 
 

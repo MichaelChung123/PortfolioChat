@@ -14,9 +14,11 @@ export const getChatMessages = () => dispatch => {
 }
 
 // SEND MESSAGE
-export const sendMessage = (message) => dispatch => {
+export const sendMessage = (message, username) => dispatch => {
+    console.log('action: ', username);
     dispatch({
         type: SEND_MESSAGE,
+        username: username,
         payload: message
     })
 }

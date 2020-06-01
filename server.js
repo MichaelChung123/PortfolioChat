@@ -22,14 +22,21 @@ io.on('connection', socket => {
     // Broadcast when a user connects
     socket.broadcast.emit('message', formatMessage(botName, 'A user has joined the chat'));
 
-    // Runs when client disconnects
-    socket.on('disconnect', () => {
-        io.emit('message', formatMessage(botName, 'A user has left the chat'));
-    });
 
     // Listen for chatMessage
     socket.on('chatMessage', (message) => {
         io.emit('message', formatMessage('User', message));
+    });
+
+    // Setting Username
+    socket.on('joined', username => {
+        console.log('joined');
+        io.emit('newUser', username);
+    });
+
+    // Runs when client disconnects
+    socket.on('disconnect', () => {
+        io.emit('message', formatMessage(botName, 'A user has left the chat'));
     });
 });
 
