@@ -1,6 +1,8 @@
 import {
     GET_CHAT_MESSAGES,
-    SEND_MESSAGE
+    SEND_MESSAGE,
+    JOIN_CHAT,
+    SET_USERNAME
 } from './types';
 
 // GET CHAT MESSAGES
@@ -17,4 +19,14 @@ export const sendMessage = (message) => dispatch => {
         type: SEND_MESSAGE,
         payload: message
     })
+}
+
+// JOIN CHAT
+export const joinChat = (username) => dispatch => {
+    dispatch({
+        type: JOIN_CHAT,
+        payload: true,
+        username: username,
+        socket: "http://127.0.0.1:4000"
+    });
 }

@@ -1,7 +1,15 @@
-import { GET_CHAT_MESSAGES, SEND_MESSAGE } from "../actions/types.js";
+import { GET_CHAT_MESSAGES, SEND_MESSAGE, JOIN_CHAT } from "../actions/types.js";
+import socketIOClient from "socket.io-client";
+
+// const ENDPOINT = "http://127.0.0.1:4000";
+// let socket = socketIOClient(ENDPOINT);
+
 
 const initialState = {
-    messages: []
+    messages: [],
+    chatJoined: false,
+    username: "",
+    socket: socketIOClient('http://localhost:3000')
 }
 
 export default function (state = initialState, action) {
@@ -15,6 +23,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 messages: [...state.messages, action.payload]
+            }
+        case JOIN_CHAT:
+            return {
+                ...state,
+                chatJoined: action.payload,
+                username: action.username,
+                socket: socketIOClient(action.socket)
             }
         default:
             return state;

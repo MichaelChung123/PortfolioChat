@@ -1,41 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { sendMessage } from '../../actions/chatActions'
+import { joinChat } from '../../actions/chatActions'
 
-class ChatForm extends Component {
+export class ChatJoin extends Component {
     state = {
-        message: ''
-    };
+        username: ''
+    }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
     onSubmit = (e) => {
         e.preventDefault();
-
-        this.props.socket.emit('chatMessage', this.state.message);
+        this.props.joinChat(this.state.username);
 
         this.setState({
-            message: ''
-        });
-    };
+            username: ''
+        })
+    }
 
     render() {
-        const { message, name } = this.state
         return (
             <div>
+                <br />
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <textarea
+                        <p>Username</p>
+                        <input
                             className="form-control"
                             type="text"
-                            name="message"
+                            name="username"
                             onChange={this.onChange}
-                            value={message}
+                            value={this.state.username}
                         />
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">
-                            Send
+                            Join Chat
                         </button>
                     </div>
                 </form>
@@ -43,9 +43,10 @@ class ChatForm extends Component {
         )
     }
 }
-
 const mapStateToProps = state => ({
-    socket: state.chatReducers.socket
+    chatJoined: state.chatReducers.chatJoined,
+    username: state.chatReducers.username
 })
 
-export default connect(mapStateToProps, { sendMessage })(ChatForm)
+
+export default connect(mapStateToProps, { joinChat })(ChatJoin);

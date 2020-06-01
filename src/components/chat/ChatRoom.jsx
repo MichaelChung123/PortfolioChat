@@ -1,23 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getChatMessages } from '../../actions/chatActions';
 import ChatForm from './ChatForm';
 import ChatLog from './ChatLog';
+import ChatJoin from './ChatJoin';
+import { joinChat } from '../../actions/chatActions'
 
 export class ChatRoom extends Component {
-    state = {
-        response: ""
-    }
-
     render() {
         return (
             <div>
-                <ChatLog />
-                <ChatForm />
+                {this.props.chatJoined ?
+                    <Fragment>
+                        <ChatLog />
+                        <ChatForm />
+                    </Fragment>
+                    :
+                    <Fragment>
+                        <ChatJoin />
+                    </Fragment>
+                }
             </div>
         )
     }
 }
 
-export default connect()(ChatRoom);
+const mapStateToProps = state => ({
+    chatJoined: state.chatReducers.chatJoined
+});
+
+export default connect(mapStateToProps)(ChatRoom);
