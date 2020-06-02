@@ -16,23 +16,37 @@ let botName = 'Chat Bot';
 
 // Run when a client connects
 io.on('connection', socket => {
-    // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
-
-    // Broadcast when a user connects
-    socket.broadcast.emit('message', formatMessage(botName, 'A user has joined the chat'));
-
-
-    // Listen for chatMessage
-    socket.on('chatMessage', (message) => {
-        io.emit('message', formatMessage('User', message));
-    });
-
     // Setting Username
-    socket.on('joined', username => {
-        console.log('joined');
-        io.emit('newUser', username);
+    socket.on('joinRoom', username => {
+        let id = socket.id;
+        const user = {
+            id,
+            username
+        };
+
+        socket.join('room');
+
+        // Welcome current user
+        socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+
+        // Broadcast when a user connects
+        // socket.broadcast.emit('message', formatMessage(botName, 'A user has joined the chat'));
+        socket.broadcast
+            .to('room')
+            .emit('message', formatMessage(botName, `${user.username} has joined the chat`));
+
+        // Listen for chatMessage
+        socket.on('chatMessage', (message) => {
+            socket.to('room').emit('message', formatMessage(username, message));
+        });
+
+
     });
+
+    // // Listen for chatMessage
+    // socket.on('chatMessage', (message) => {
+    //     io.emit('message', formatMessage('User', message));
+    // });
 
     // Runs when client disconnects
     socket.on('disconnect', () => {

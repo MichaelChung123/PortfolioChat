@@ -5,8 +5,11 @@ const initialState = {
     messages: [],
     chatJoined: false,
     username: "",
-    socket: ''
+    socket: socketIOClient("http://127.0.0.1:4000"),
+    users: []
 }
+
+console.log("socket connected : ", initialState.socket)
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -15,10 +18,11 @@ export default function (state = initialState, action) {
                 ...state,
                 messages: action.payload
             }
-        case SEND_MESSAGE:   
+        case SEND_MESSAGE:
+            console.log('reducer: ', action.payload.username);
             return {
                 ...state,
-                username: action.username,
+                username: action.payload.username,
                 messages: [...state.messages, action.payload]
             }
         case JOIN_CHAT:
@@ -26,7 +30,7 @@ export default function (state = initialState, action) {
                 ...state,
                 chatJoined: action.payload,
                 username: action.username,
-                socket: socketIOClient(action.socket)
+                socket: state.socket
             }
         default:
             return state;

@@ -14,21 +14,19 @@ export const getChatMessages = () => dispatch => {
 }
 
 // SEND MESSAGE
-export const sendMessage = (message, username) => dispatch => {
-    console.log('action: ', username);
+export const sendMessage = (messageObj) => dispatch => {
     dispatch({
         type: SEND_MESSAGE,
-        username: username,
-        payload: message
+        payload: messageObj
     })
 }
 
 // JOIN CHAT
 export const joinChat = (username) => dispatch => {
+    
     dispatch({
         type: JOIN_CHAT,
         payload: true,
-        username: username,
-        socket: "http://127.0.0.1:4000"
+        username: username
     });
 }

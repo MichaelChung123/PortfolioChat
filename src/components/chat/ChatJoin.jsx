@@ -6,6 +6,13 @@ export class ChatJoin extends Component {
     state = {
         username: ''
     }
+    
+    userJoin = (id, username) => {
+        const user = { id, username };
+        this.props.users.push(user);
+
+        return user;
+    }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
@@ -13,6 +20,8 @@ export class ChatJoin extends Component {
         e.preventDefault();
 
         this.props.joinChat(this.state.username);
+
+        this.props.socket.emit('joinRoom', this.state.username);
 
         this.setState({
             username: ''
@@ -47,7 +56,8 @@ export class ChatJoin extends Component {
 const mapStateToProps = state => ({
     chatJoined: state.chatReducers.chatJoined,
     username: state.chatReducers.username,
-    socket: state.chatReducers.socket
+    socket: state.chatReducers.socket,
+    users: state.chatReducers.users
 })
 
 

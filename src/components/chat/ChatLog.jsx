@@ -9,18 +9,17 @@ class ChatLog extends Component {
     }
 
     componentDidMount() {
-        this.props.socket.emit('joined', this.props.username);
-
-        this.props.socket.on('newUser', username => {
-            console.log('on newUser: ', username)
-            this.props.socket.on('message', (text) => {
-                this.props.sendMessage(text, username);
-            });
+        this.props.socket.on('message', (msgObject) => {
+            console.log('msgObject: ', msgObject);
+            this.props.sendMessage(msgObject);
         });
+
+
 
     }
 
     render() {
+        console.log('messages: ', this.props.messages);
         return (
             <div>
                 <br />
