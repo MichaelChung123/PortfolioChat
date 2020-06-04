@@ -37,21 +37,15 @@ io.on('connection', socket => {
 
         // Listen for chatMessage
         socket.on('chatMessage', (message) => {
-            socket.to('room').emit('message', formatMessage(username, message));
+            io.to('room').emit('message', formatMessage(username, message));
         });
 
-
+        // Runs when client disconnects
+        socket.on('disconnect', () => {
+            io.emit('message', formatMessage(botName, `${user.username} user has left the chat`));
+        });
     });
 
-    // // Listen for chatMessage
-    // socket.on('chatMessage', (message) => {
-    //     io.emit('message', formatMessage('User', message));
-    // });
-
-    // Runs when client disconnects
-    socket.on('disconnect', () => {
-        io.emit('message', formatMessage(botName, 'A user has left the chat'));
-    });
 });
 
 const PORT = 4000 || process.env.PORT;

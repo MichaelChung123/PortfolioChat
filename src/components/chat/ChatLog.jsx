@@ -10,16 +10,11 @@ class ChatLog extends Component {
 
     componentDidMount() {
         this.props.socket.on('message', (msgObject) => {
-            console.log('msgObject: ', msgObject);
             this.props.sendMessage(msgObject);
         });
-
-
-
     }
 
     render() {
-        console.log('messages: ', this.props.messages);
         return (
             <div>
                 <br />
@@ -27,7 +22,7 @@ class ChatLog extends Component {
                     this.props.messages.map((message, key) => {
                         return (
                             <div key={key} className="container darker">
-                                <span>{this.props.username}  {message.time}</span>
+                                <span>{message.username}  {message.time}</span>
                                 <p>{message.text}</p>
                             </div>
                         )

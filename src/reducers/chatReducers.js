@@ -9,8 +9,6 @@ const initialState = {
     users: []
 }
 
-console.log("socket connected : ", initialState.socket)
-
 export default function (state = initialState, action) {
     switch (action.type) {
         case GET_CHAT_MESSAGES:
@@ -19,10 +17,8 @@ export default function (state = initialState, action) {
                 messages: action.payload
             }
         case SEND_MESSAGE:
-            console.log('reducer: ', action.payload.username);
             return {
                 ...state,
-                username: action.payload.username,
                 messages: [...state.messages, action.payload]
             }
         case JOIN_CHAT:

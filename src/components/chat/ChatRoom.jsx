@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { getChatMessages } from '../../actions/chatActions';
 import ChatForm from './ChatForm';
 import ChatLog from './ChatLog';
 import ChatJoin from './ChatJoin';
-import { joinChat } from '../../actions/chatActions'
 
 export class ChatRoom extends Component {
     render() {

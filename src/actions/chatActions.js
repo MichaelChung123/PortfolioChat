@@ -1,8 +1,7 @@
 import {
     GET_CHAT_MESSAGES,
     SEND_MESSAGE,
-    JOIN_CHAT,
-    SET_USERNAME
+    JOIN_CHAT
 } from './types';
 
 // GET CHAT MESSAGES
@@ -23,7 +22,6 @@ export const sendMessage = (messageObj) => dispatch => {
 
 // JOIN CHAT
 export const joinChat = (username) => dispatch => {
-    
     dispatch({
         type: JOIN_CHAT,
         payload: true,

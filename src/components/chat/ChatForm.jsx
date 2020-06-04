@@ -20,7 +20,7 @@ class ChatForm extends Component {
     };
 
     render() {
-        const { message, name } = this.state
+        const { message } = this.state
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
