@@ -6,10 +6,12 @@ export class Footer extends Component {
             <nav className="navbar fixed-bottom navbar-light bg-light footer-container">
                 <div className="footer-content">
                     <h5>Now that you're here...</h5>
-                    <h3>See my full resume</h3>
-                    <h7>© Michael Chung</h7>
+                    <a className="minimal">
+                        <h3 className="underline blue-green">See my full resume</h3>
+                    </a>
+                    <p>© Michael Chung</p>
                 </div>
-                
+
             </nav>
         )
     }

@@ -16,3 +16,56 @@ h1 {
 a.minimal:hover {
     color: var(--link-color);
 }
+
+.main-desc {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.desc-socials a {
+    margin-right: 16px;
+}
+
+/* Projects */
+
+.list-style-none {
+    list-style: none;
+}
+
+.works {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-gap: 1rem;
+}
+
+.projects-container h4 {
+    display: flex;
+    justify-content: center;
+}
+
+.projects-container li {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.align-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.techs {
+    border: 1px solid #a0a0a0;
+    padding: .25rem .5rem;
+    font-size: .8rem;
+    border-radius: .2rem;
+    color: gray;
+    margin: .1rem .1rem;
+    display: inline-block;
+}

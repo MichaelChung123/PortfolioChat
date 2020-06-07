@@ -3,3 +3,6 @@ export const SEND_MESSAGE = "SEND_MESSAGE";
 export const JOIN_CHAT = "JOIN_CHAT";
 
 export const SET_SOCKET = "SET_SOCKET";
+
+
+export const GET_PROJECTS = "GET_PROJECTS";
