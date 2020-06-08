@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 export class Employment extends Component {
     render() {
@@ -16,7 +16,7 @@ export class Employment extends Component {
                                     <div key={key} className="col-xs-1 col-sm-1 col-md-6 col-lg-4">
                                         <li className="list-style-none">
                                             <a href="">
-                                                <img src={require('../profile_img.jpeg')} />
+                                                <img className="work-img" src={job.src} />
                                             </a>
                                             <div className="project-description align-center">
                                                 <br />
@@ -29,7 +29,7 @@ export class Employment extends Component {
                                 )
                             })
                         }
-                    
+
                     </div>
                 </ul>
             </div>

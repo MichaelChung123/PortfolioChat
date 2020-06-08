@@ -7,7 +7,8 @@ import ChatJoin from './ChatJoin';
 export class ChatRoom extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="container chat-container">
+                <br />
                 {this.props.chatJoined ?
                     <Fragment>
                         <ChatLog />

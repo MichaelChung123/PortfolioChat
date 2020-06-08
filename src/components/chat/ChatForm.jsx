@@ -22,24 +22,22 @@ class ChatForm extends Component {
     render() {
         const { message } = this.state
         return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <textarea
-                            className="form-control"
-                            type="text"
-                            name="message"
-                            onChange={this.onChange}
-                            value={message}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">
-                            Send
-                        </button>
-                    </div>
-                </form>
-            </div>
+            <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                    <textarea
+                        className="form-control"
+                        type="text"
+                        name="message"
+                        onChange={this.onChange}
+                        value={message}
+                    />
+                </div>
+                <div className="form-group">
+                    <button type="submit" className="btn btn-primary">
+                        Send
+                    </button>
+                </div>
+            </form>
         )
     }
 }

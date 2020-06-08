@@ -16,7 +16,7 @@ export class Projects extends Component {
                                     <div key={key} className="col-xs-1 col-sm-1 col-md-6 col-lg-4">
                                         <li className="list-style-none">
                                             <a href="">
-                                                <img src={require('../profile_img.jpeg')} />
+                                                <img className="exp-img" src={project.src} />
                                             </a>
                                             <div className="project-description align-center">
                                                 <br />

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { sendMessage } from '../../actions/chatActions';
 import PropTypes from 'prop-types';
@@ -16,7 +16,7 @@ class ChatLog extends Component {
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <br />
                 {
                     this.props.messages.map((message, key) => {
@@ -28,7 +28,7 @@ class ChatLog extends Component {
                         )
                     })
                 }
-            </div>
+            </Fragment>
         )
     }
 }

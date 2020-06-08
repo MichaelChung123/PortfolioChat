@@ -69,3 +69,20 @@ a.minimal:hover {
     margin: .1rem .1rem;
     display: inline-block;
 }
+
+.exp-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.work-img {
+    width: 200px;
+    height: 200px;
+}
+
+/* Chat */
+
+.chat-container {
+    padding-bottom: 150px;
+}

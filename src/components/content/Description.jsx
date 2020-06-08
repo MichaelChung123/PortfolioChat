@@ -10,7 +10,7 @@ export class Description extends Component {
                 <br />
                 <h1>Let's talk!</h1>
                 <p>I'm a Web Developer with a mission to create great products that people love.</p>
-                <a className="minimal">
+                <a href="https://github.com/MichaelChung123" className="minimal">
                     <span className="underline blue-green">Checkout my Projects</span>
                 </a>
                 <div className="desc-socials">

@@ -6,7 +6,7 @@ export class ChatJoin extends Component {
     state = {
         username: ''
     }
-    
+
     userJoin = (id, username) => {
         const user = { id, username };
         this.props.users.push(user);
@@ -30,26 +30,23 @@ export class ChatJoin extends Component {
 
     render() {
         return (
-            <div>
-                <br />
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <p>Username</p>
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="username"
-                            onChange={this.onChange}
-                            value={this.state.username}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">
-                            Join Chat
-                        </button>
-                    </div>
-                </form>
-            </div>
+            <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                    <p>Username</p>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="username"
+                        onChange={this.onChange}
+                        value={this.state.username}
+                    />
+                </div>
+                <div className="form-group">
+                    <button type="submit" className="btn btn-primary">
+                        Join Chat
+                    </button>
+                </div>
+            </form>
         )
     }
 }
