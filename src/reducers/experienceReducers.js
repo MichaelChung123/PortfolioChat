@@ -48,6 +48,30 @@ const initialState = {
             title: "Squirrel Systems",
             desc: "Assisted customers in troubleshooting and maintaining their restaurant POS (Point of Sale) Systems.  Built valuable product service skills by collaborating with customers remotely and over the phone."
         }
+    ],
+    aboutItems: [
+        {
+            title: "🛠 Techstack",
+            listItems: ["HTML & CSS", "JavaScript", "Python & Django (Ongoing)", "Node & Express", "React", "Redux", "jQuery", "PostgreSQL", "MongoDB", "RESTful API", "Git"]
+        },
+        {
+            title: "💾 Technology Interests",
+            listItems: ["🌐 Everything Web", "JavaScript & React"]
+        },
+        {
+            title: "✏️ Design Tools",
+            listItems: ["Adobe Photoshop", "Adobe XD"]
+        },
+        {
+            title: "💡 Personal Pursuits",
+            listItems: ["🏋 Fitness & Health", "🧠 Productivity", "🥑 Food", "🎵 Music", "👨‍💻 Programming"]
+        },
+        {
+            title: "🤖 Professional Activities",
+            listItems: ["Fullstack Development", "Frontend Development", "Design & Code", "Creative Direction", "Open Source Software", "Prototyping"]
+        },
+        
+
     ]
 }
 

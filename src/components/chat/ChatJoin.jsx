@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { joinChat } from '../../actions/chatActions'
 
@@ -30,23 +30,32 @@ export class ChatJoin extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                    <p>Username</p>
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="username"
-                        onChange={this.onChange}
-                        value={this.state.username}
-                    />
+            <Fragment>
+                <div className="main-desc">
+                    <br />
+                    <img className="rounded-circle" src={require('../content//profile_img.jpeg')} />
+                    <br />
+                    <h1>Direct Message me!</h1>
+                    <p>Enter your name to start a chat with me.</p>
                 </div>
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary">
-                        Join Chat
-                    </button>
-                </div>
-            </form>
+                <form onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <p>Name</p>
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="username"
+                            onChange={this.onChange}
+                            value={this.state.username}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <button type="submit" className="btn btn-primary">
+                            Join Chat
+            </button>
+                    </div>
+                </form>
+            </Fragment>
         )
     }
 }

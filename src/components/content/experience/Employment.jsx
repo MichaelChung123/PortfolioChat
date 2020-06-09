@@ -8,12 +8,12 @@ export class Employment extends Component {
                 <br />
                 <h4>Employment</h4>
                 <br />
-                <ul className="works p-0 m-0">
-                    <div className="row">
+                <div className="row">
+                    <ul className="works p-0 m-0">
                         {
                             this.props.employment.map((job, key) => {
                                 return (
-                                    <div key={key} className="col-xs-1 col-sm-1 col-md-6 col-lg-4">
+                                    <div key={key}>
                                         <li className="list-style-none">
                                             <a href="">
                                                 <img className="work-img" src={job.src} />
@@ -30,8 +30,8 @@ export class Employment extends Component {
                             })
                         }
 
-                    </div>
-                </ul>
+                    </ul>
+                </div>
             </div>
         )
     }

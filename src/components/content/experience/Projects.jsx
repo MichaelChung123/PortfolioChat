@@ -13,7 +13,7 @@ export class Projects extends Component {
                         {
                             this.props.projects.map((project, key) => {
                                 return (
-                                    <div key={key} className="col-xs-1 col-sm-1 col-md-6 col-lg-4">
+                                    <div key={key} className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                         <li className="list-style-none">
                                             <a href="">
                                                 <img className="exp-img" src={project.src} />
